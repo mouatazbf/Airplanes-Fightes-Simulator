@@ -1,8 +1,9 @@
 <?php
 
+
 class Container
 {
-    private $configuration;
+    $configuration = new Configuration();
 
     private $pdo;
 
@@ -24,9 +25,9 @@ class Container
     {
         if ($this->pdo === null) {
             $this->pdo = new PDO(
-                $this->configuration['db_dsn'],
-                $this->configuration['db_user'],
-                $this->configuration['db_pass']
+                $this->configuration->getDbDsn(),
+                $this->configuration->getDbUser(),
+                $this->configuration->getDbPass()
             );
 
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
