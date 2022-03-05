@@ -1,8 +1,7 @@
 <?php
 require __DIR__.'/bootstrap.php';
 
-// TODO change $configuration variable from array to object
-$container = new Container($configuration);
+$container = new Container();
 
 $shipLoader = $container->getShipLoader();
 $ships = $shipLoader->getShips();

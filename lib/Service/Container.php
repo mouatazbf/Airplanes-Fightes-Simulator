@@ -2,9 +2,11 @@
 
 class Container
 {
-    private $configuration;
-
-    private $pdo;
+    public const PDO_DNS = 'mysql:host=localhost;dbname=oo_battle';
+    public const PDO_USERNAME = 'root';
+    public const PDO_PASSWORD = null;
+    
+    private ?PDO $pdo;
 
     private $shipLoader;
 
@@ -12,21 +14,13 @@ class Container
 
     private $shipStorage;
 
-    public function __construct(array $configuration)
-    {
-        $this->configuration = $configuration;
-    }
-
-    /**
-     * @return PDO
-     */
-    public function getPDO()
+    public function getPDO(): PDO
     {
         if ($this->pdo === null) {
             $this->pdo = new PDO(
-                $this->configuration['db_dsn'],
-                $this->configuration['db_user'],
-                $this->configuration['db_pass']
+                self::PDO_DNS,
+                self::PDO_USERNAME,
+                self::PDO_PASSWORD
             );
 
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -51,7 +45,7 @@ class Container
     {
         if ($this->shipStorage === null) {
             //$this->shipStorage = new PdoShipStorage($this->getPDO());
-            $this->shipStorage = new JsonFileShipStorage(__DIR__.'/../../resources/ships.json');
+            $this->shipStorage = new JsonFileShipStorage(__DIR__ . '/../../resources/ships.json');
         }
 
         return $this->shipStorage;
