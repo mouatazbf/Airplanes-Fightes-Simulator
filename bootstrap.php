@@ -15,5 +15,3 @@ require_once __DIR__.'/lib/Service/ShipLoader.php';
 require_once __DIR__.'/lib/Model/BattleResult.php';
 
 
-);
-

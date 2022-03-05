@@ -3,7 +3,7 @@
 
 class Container
 {
-    $configuration = new Configuration();
+    private Configuration $configuration;
 
     private $pdo;
 
@@ -13,9 +13,9 @@ class Container
 
     private $shipStorage;
 
-    public function __construct(array $configuration)
+    public function __construct()
     {
-        $this->configuration = $configuration;
+        $this->configuration = new Configuration();
     }
 
     /**
