@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model;
+
 class Ship extends AbstractShip
 {
     private $jediFactor = 0;

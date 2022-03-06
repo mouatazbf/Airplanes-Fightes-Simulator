@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Service;
+
+use App\Model\AbstractShip;
+use App\Model\BattleResult;
+
 class BattleManager
 {
     /**
@@ -60,6 +65,6 @@ class BattleManager
     {
         $jediHeroProbability = $ship->getJediFactor() / 100;
 
-        return mt_rand(1, 100) <= ($jediHeroProbability*100);
+        return mt_rand(1, 100) <= ($jediHeroProbability * 100);
     }
 }

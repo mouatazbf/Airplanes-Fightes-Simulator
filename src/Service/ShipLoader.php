@@ -1,5 +1,11 @@
 <?php
 
+namespace App\Service;
+
+use App\Model\AbstractShip;
+use App\Model\RebelShip;
+use App\Model\Ship;
+
 class ShipLoader
 {
     private $shipStorage;
@@ -25,15 +31,9 @@ class ShipLoader
         return $ships;
     }
 
-    /**
-     * @param $id
-     * @return AbstractShip
-     */
-    public function findOneById($id)
+    private function queryForShips()
     {
-        $shipArray = $this->shipStorage->fetchSingleShipData($id);
-
-        return $this->createShipFromData($shipArray);
+        return $this->shipStorage->fetchAllShipsData();
     }
 
     private function createShipFromData(array $shipData)
@@ -52,9 +52,15 @@ class ShipLoader
         return $ship;
     }
 
-    private function queryForShips()
+    /**
+     * @param $id
+     * @return AbstractShip
+     */
+    public function findOneById($id)
     {
-        return $this->shipStorage->fetchAllShipsData();
+        $shipArray = $this->shipStorage->fetchSingleShipData($id);
+
+        return $this->createShipFromData($shipArray);
     }
 }
 

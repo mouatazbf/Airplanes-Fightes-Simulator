@@ -1,5 +1,7 @@
 <?php
 
+use lib\Model\Ship;
+
 require_once __DIR__.'/lib/Ship.php';
 
 /**
