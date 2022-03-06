@@ -1,11 +1,16 @@
 <?php
 
+namespace App\Service;
+
+// Global namespace = namespace of PHP itself => \
+use PDO;
+
 class Container
 {
     public const PDO_DNS = 'mysql:host=localhost;dbname=oo_battle';
     public const PDO_USERNAME = 'root';
     public const PDO_PASSWORD = null;
-    
+
     private ?PDO $pdo;
 
     private $shipLoader;
@@ -45,7 +50,8 @@ class Container
     {
         if ($this->shipStorage === null) {
             //$this->shipStorage = new PdoShipStorage($this->getPDO());
-            $this->shipStorage = new JsonFileShipStorage(__DIR__ . '/../../resources/ships.json');
+
+            $this->shipStorage = new JsonFileShipStorage(__DIR__ . '/../Resources/ships.json');
         }
 
         return $this->shipStorage;
